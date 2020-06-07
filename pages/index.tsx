@@ -1,24 +1,30 @@
-import withApollo from '../lib/with-apollo'
-import Link from 'next/link'
-import { useViewerQuery } from '../lib/viewer.graphql'
+import withApollo from "../lib/with-apollo";
+import Link from "next/link";
+import { useLoginMutation } from "../generated/apolloComponents";
 
 const Index = () => {
-  const { data } = useViewerQuery()
+  const [login] = useLoginMutation();
+  return (
+    <div>
+      You're signed in as nul and you're null goto{" "}
+      <Link href="/about">
+        <a>static</a>
+      </Link>{" "}
+      page.
+      <button
+        onClick={() =>
+          login({
+            variables: {
+              email: "kristian@kristian.com",
+              password: "Kristian345",
+            },
+          })
+        }
+      >
+        call login mutation
+      </button>
+    </div>
+  );
+};
 
-  if (data) {
-    const { viewer } = data
-    return (
-      <div>
-        You're signed in as {viewer.name} and you're {viewer.status} goto{' '}
-        <Link href="/about">
-          <a>static</a>
-        </Link>{' '}
-        page.
-      </div>
-    )
-  }
-
-  return <div>...</div>
-}
-
-export default withApollo(Index)
+export default withApollo(Index);
