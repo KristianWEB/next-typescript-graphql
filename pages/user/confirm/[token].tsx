@@ -13,7 +13,7 @@ const Confirm = () => {
   }
 
   const onConfirm = async () => {
-    const response = confirmUser({
+    confirmUser({
       variables: {
         token,
       },
