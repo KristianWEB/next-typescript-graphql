@@ -1,28 +1,27 @@
 import React from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { useRouter } from "next/router";
+import withApollo from "../../../lib/with-apollo";
+import { useConfirmUserMutation } from "../../../generated/apolloComponents";
 
-const Confirm = (token: string) => {
-  // 11:56
-  console.log(token);
+const Confirm = () => {
+  const router = useRouter();
+  const [confirmUser] = useConfirmUserMutation();
+  const { token }: { token?: string } = router.query;
 
-  return <div>hi</div>;
-};
-export const getStaticPaths: GetStaticPaths = async () => {
-  // Return a list of possible value for id
-  return {
-    paths: [
-      {
-        params: {
-          token: "230843298",
-        },
+  if (!token) {
+    return null;
+  }
+
+  const onConfirm = async () => {
+    const response = confirmUser({
+      variables: {
+        token,
       },
-    ],
-    fallback: false,
+    });
+    router.push("/login");
   };
+
+  return <button onClick={onConfirm}>Confirm user</button>;
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  return { props: { token: context?.params?.token } };
-};
-
-export default Confirm;
+export default withApollo(Confirm);
