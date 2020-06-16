@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Layout from "../components/Layout";
 import { Formik, Field } from "formik";
 import { InputField } from "../components/fields/inputField";
@@ -6,6 +7,7 @@ import { useRegisterMutation } from "../generated/apolloComponents";
 import withApollo from "../lib/with-apollo";
 
 const Register = () => {
+  const router = useRouter();
   const [register] = useRegisterMutation();
 
   return (
@@ -20,6 +22,7 @@ const Register = () => {
                 data,
               },
             });
+            router.push("/check-email");
           } catch (error) {
             const errors: { [key: string]: string } = {};
 

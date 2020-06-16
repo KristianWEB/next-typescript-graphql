@@ -22,16 +22,16 @@ const Layout: React.FunctionComponent<Props> = ({
           <a>Home</a>
         </Link>{" "}
         |{" "}
-        <Link href="/list-fc">
-          <a>List as Functional Component</a>
+        <Link href="/me">
+          <a>Me</a>
         </Link>{" "}
         |{" "}
-        <Link href="/list-class">
-          <a>List As Class</a>
+        <Link href="/register">
+          <a>Register</a>
         </Link>{" "}
         |{" "}
-        <Link href="/about">
-          <a>About</a>
+        <Link href="/login">
+          <a>Login</a>
         </Link>{" "}
         |{" "}
       </nav>
