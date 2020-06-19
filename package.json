@@ -27,7 +27,8 @@
     "graphql-tag": "^2.10.3",
     "next": "latest",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.15.3",
@@ -36,6 +37,7 @@
     "@graphql-codegen/typescript-react-apollo": "1.15.3",
     "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.7",
+    "@types/styled-components": "^5.1.0",
     "typescript": "^3.8.3"
   }
 }
